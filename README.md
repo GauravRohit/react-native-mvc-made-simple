@@ -41,16 +41,16 @@ I am trying to use a MVC pattern whenever possible.
 Here is an explanation (and it's kinda my own version :-; ):
 
 
-. index.*.js - entry point of the application
-. res/ - holds the resource files used
-. src/ - where application code is
-	. app.js - re-directed entry point of index.*.js above
-	. models/ - Our gateway to all type of data output and input to our application. To be more concrete, think of it as a wrapper for the localStorage and FireBae API.)
-	. ui/ - this acts as the VIEW in a MVC pattern. It's all of what the end-users see and interact with.
-		. component/
-			. commons
-		. screens/
-	. controller/ - acts as the part responsible to connect the VIEW and MODEL (and doing the logic).
+* . index.*.js - entry point of the application
+* . res/ - holds the resource files used
+*. src/ - where application code is
+*	. app.js - re-directed entry point of index.*.js above
+*	. models/ - Our gateway to all type of data output and input to our application. To be more concrete, think of it as a wrapper for the localStorage and FireBae API.)
+*	. ui/ - this acts as the VIEW in a MVC pattern. It's all of what the end-users see and interact with.
+*		. component/
+*			. commons
+*		. screens/
+*	. controller/ - acts as the part responsible to connect the VIEW and MODEL (and doing the logic).
 
 * To not mess things up, we should only import a controller from a screen source file. Then, whatever the event a component needs to respond to, pass one callback/function of the controller.
 
