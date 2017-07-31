@@ -1,23 +1,37 @@
 {
-  "name": "ReactNativeMVCMadeSimple",
+  "name": "Mollina",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "postinstall": "node ./scripts/postinstall.js",
+    "start": "watchman watch-del-all && (adb reverse tcp:8081 tcp:8081 || true) && node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "xcode": "open ios/example.xcodeproj",
+    "android": "cd android && ./gradlew installDebug",
+    "e2e": "node ./scripts/e2e.ios.js"
   },
   "dependencies": {
-    "native-base": "^2.0.7",
-    "react": "15.4.2",
-    "react-native": "0.41.2"
+    "native-base": "^2.0.8",
+    "react": "15.4.1",
+    "react-native": "0.38.0",
+    "react-native-app-intro": "^1.1.5",
+    "react-native-localization": "^0.1.31",
+    "react-native-navigation": "file:../",
+    "react-native-storage": "^0.2.2",
+    "react-native-vector-icons": "^2.0.3",
+    "undefined": "^0.1.0"
   },
   "devDependencies": {
-    "babel-jest": "18.0.0",
-    "babel-preset-react-native": "1.9.1",
-    "jest": "18.1.0",
-    "react-test-renderer": "15.4.2"
+    "detox": "4.x.x",
+    "detox-server": "1.x.x"
   },
-  "jest": {
-    "preset": "react-native"
+  "detox": {
+    "session": {
+      "server": "ws://localhost:8099",
+      "sessionId": "example"
+    },
+    "ios-simulator": {
+      "app": "ios/DerivedData/example/Build/Products/Debug_Detox-iphonesimulator/example.app",
+      "device": "iPhone 7, iOS 10.1"
+    }
   }
 }
